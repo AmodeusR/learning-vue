@@ -1,6 +1,14 @@
 <script setup lang="ts">
   import Tasks from "@/components/Tasks.vue";
   import CreateTask from "./components/CreateTask.vue";
+  import type { Task } from "./components/types";
+  import { ref } from "vue";
+
+  const tasks = ref<Task[]>([]);
+
+  const createTask = (task: Task) => {
+    tasks.value.push(task)
+  }
 </script>
 
 <template>
@@ -8,8 +16,8 @@
     <h1>Tasks</h1>
 
     <main>
-      <CreateTask />
-      <Tasks />
+      <CreateTask @task-creation="createTask" />
+      <Tasks :tasks="tasks" />
     </main>
   </div>
 </template>
