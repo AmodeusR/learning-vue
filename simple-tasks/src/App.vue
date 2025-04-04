@@ -9,6 +9,10 @@
   const createTask = (task: Task) => {
     tasks.value.push(task)
   }
+
+  const deleteTask = (id: string) => {
+    tasks.value = tasks.value.filter(task => task.id !== id);
+  }
 </script>
 
 <template>
@@ -17,7 +21,7 @@
 
     <main>
       <CreateTask @task-creation="createTask" />
-      <Tasks :tasks="tasks" />
+      <Tasks :tasks="tasks" :deleteTask="deleteTask" />
     </main>
   </div>
 </template>

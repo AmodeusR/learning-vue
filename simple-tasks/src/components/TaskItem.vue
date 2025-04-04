@@ -1,16 +1,18 @@
 <template>
   <li>
-    <h2>{{ title }}</h2>
-    <p v-if="description">{{ description }}</p>
+    <div>
+      <h2>{{ title }}</h2>
+      <p v-if="description">{{ description }}</p>
+    </div>
+    <button class="delete" @click="$emit('task-deletion', id)">Delete</button>
   </li>
 </template>
 
 <script setup lang="ts">
   import type { Task } from "./types";
 
-  type TaskInfo = Omit<Task, "id">;
 
-  const { title, description } = defineProps<TaskInfo>();
+  const { title, description, id } = defineProps<Task>();
 
 </script>
 
@@ -25,6 +27,9 @@
   }
 
   li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     list-style: none;
     margin: 1rem 0;

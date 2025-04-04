@@ -2,12 +2,13 @@
   import TaskItem from "./TaskItem.vue";
   import type { Task } from "./types";
 
-  const { tasks } = defineProps<{ tasks: Task[]}>();
+  const { tasks, deleteTask } = defineProps<{ tasks: Task[], deleteTask: ((id: string) => void)}>();
+
 </script>
 
 <template>
   <ul>
-    <TaskItem v-for="task in [...tasks].reverse()" :key="task.id" :title="task.title" :description="task.description" />
+    <TaskItem v-for="task in [...tasks].reverse()" :key="task.id" :id="task.id" :title="task.title" :description="task.description" @task-deletion="deleteTask" />
   </ul>
 </template>
 
