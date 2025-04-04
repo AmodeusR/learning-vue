@@ -1,15 +1,16 @@
 <template>
   <li>
     <h2>{{ title }}</h2>
-    <p>{{ description }}</p>
+    <p v-if="description">{{ description }}</p>
   </li>
 </template>
 
 <script setup lang="ts">
-  const { title, description } = defineProps<{
-    title: string;
-    description?: string;
-  }>();
+  import type { Task } from "./types";
+
+  type TaskInfo = Omit<Task, "id">;
+
+  const { title, description } = defineProps<TaskInfo>();
 
 </script>
 
