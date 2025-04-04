@@ -37,4 +37,18 @@
   li:hover {
     border-color: #ccc8
   }
+  .delete {
+    background: none;
+    border: none;
+    color: #ccc4;
+    transition: color 150ms;
+    padding: .5rem 0rem;
+    font-weight: 700;
+    font-size: .9rem;
+
+    &:hover {
+      color: crimson;
+      cursor: pointer;
+    }
+  }
 </style>
