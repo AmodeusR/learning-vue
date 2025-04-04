@@ -1,12 +1,13 @@
 <script setup lang="ts">
   import TaskItem from "./TaskItem.vue";
+  import type { Task } from "./types";
+
+  const { tasks } = defineProps<{ tasks: Task[]}>();
 </script>
 
 <template>
   <ul>
-    <TaskItem title="Walk the dogs" description="Take the dogs for a walk" />
-    <TaskItem title="Walk the dogs" description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et quae consectetur eum facere dolorem molestias velit sequi nobis culpa autem.
-" />
+    <TaskItem v-for="task in [...tasks].reverse()" :key="task.id" :title="task.title" :description="task.description" />
   </ul>
 </template>
 
